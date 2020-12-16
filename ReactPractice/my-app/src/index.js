@@ -10,6 +10,7 @@ import ToDoApp from "./Components/ToDoApp"
 
 import ContactList from "./Components/ContactList"
 
+import JokeMain from "./Components/JokeMain"
 // ReactDOM.render(
 //   <React.StrictMode>
 //     <ToDoApp />
@@ -20,7 +21,7 @@ import ContactList from "./Components/ContactList"
 
 ReactDOM.render(
   <React.StrictMode>
-    <ContactList />
+    <JokeMain />
   </React.StrictMode>,
   document.getElementById('root')
 );
