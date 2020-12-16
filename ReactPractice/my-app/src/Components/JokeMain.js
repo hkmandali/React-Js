@@ -6,7 +6,7 @@ function JokeMain(){
     // we can map the components of jokesdata (array of jokes ), instead of passing each argument
 
     const jokeComponent = jokesData.map(function(joke) {
-        return <Joke question = {joke.question} punchLine ={joke.punchLine} />
+        return <Joke key = {joke.id} question = {joke.question} punchLine ={joke.punchLine} />
     })
 
     return(
