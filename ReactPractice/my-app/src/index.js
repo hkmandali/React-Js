@@ -21,7 +21,7 @@ import JokeMain from "./Components/JokeMain"
 
 ReactDOM.render(
   <React.StrictMode>
-    <JokeMain />
+    <ToDoApp />
   </React.StrictMode>,
   document.getElementById('root')
 );

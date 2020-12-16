@@ -2,13 +2,12 @@ import React from "react"
 
 import ReactDOM from "react-dom"
 import ToDoItem from "./ToDoItem"
+import todosData from "./todosData"
 function ToDoApp(){
+    const todoComponents = todosData.map((item) => <ToDoItem key={item.id} item={item}/>)
     return(
         <div className="todo-list">
-            <ToDoItem />
-            <ToDoItem />
-            <ToDoItem />
-            <ToDoItem />
+            {todoComponents}
         </div>
     );
 
