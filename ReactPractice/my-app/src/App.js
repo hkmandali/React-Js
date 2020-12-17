@@ -25,11 +25,17 @@ import React from "react"
 
 class App extends React.Component
 {
+  constructor(){
+    super()
+    this.state ={
+      answer : "done"
+    }
+  }
   render()
   {
     return (
       <div>
-        <h1>Implemented class based Component</h1>
+        <h1>Implemented class based Component {this.state.answer}</h1>
       </div>
     )
   }
