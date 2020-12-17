@@ -36,9 +36,9 @@ class App extends React.Component
   constructor(){
     super()
     this.state ={
-      count : 0
+      firstName : ""
     }
-    //this.handleClick = this.handleClick.bind(this)
+    this.handleChange = this.handleChange.bind(this)
   }
 
   componentDidMount(){
@@ -61,15 +61,34 @@ class App extends React.Component
     }
     )
   }
-  render()
-  {
-    return (
+  // render()
+  // {
+  //   return (
+  //     <div>
+  //       <h1>{this.state.count}</h1>
+  //       <button >CLick me to change the count</button>
+  //     </div>
+  //   )
+  // }
+  handleChange(event){
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
+  render(){
+    return(
       <div>
-        <h1>{this.state.count}</h1>
-        <button >CLick me to change the count</button>
+        <form>
+          <input type="text" value = {this.state.firstName} name="firstName" placeholder="First Name" onChange={this.handleChange} />
+          <br />
+          <input type="text" value = {this.state.lastName} name="lastName" placeholder="Last Name" onChange={this.handleChange} />
+          <h1>{this.state.firstName} {this.state.lastName}</h1>
+        </form>
       </div>
     )
   }
+
+
 }
 
 export default App;
