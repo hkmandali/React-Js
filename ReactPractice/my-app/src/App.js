@@ -36,7 +36,11 @@ class App extends React.Component
   constructor(){
     super()
     this.state ={
-      firstName : ""
+      firstName : "",
+      lastName :"",
+      isFriendly :false,
+      gender :"",
+      favColor :""
     }
     this.handleChange = this.handleChange.bind(this)
   }
@@ -71,7 +75,9 @@ class App extends React.Component
   //   )
   // }
   handleChange(event){
-    this.setState({
+    event.target.type === "checkbox" ? 
+      this.setState({[event.target.name] : event.target.checked})
+    : this.setState({
       [event.target.name]: event.target.value
     })
   }
@@ -82,7 +88,44 @@ class App extends React.Component
           <input type="text" value = {this.state.firstName} name="firstName" placeholder="First Name" onChange={this.handleChange} />
           <br />
           <input type="text" value = {this.state.lastName} name="lastName" placeholder="Last Name" onChange={this.handleChange} />
-          <h1>{this.state.firstName} {this.state.lastName}</h1>
+          {/* <h1>{this.state.firstName} {this.state.lastName}</h1> */}
+          <br />
+          <textarea placeholder="some default text" />
+          <br />
+          <input type="checkbox" 
+            name ="isFriendly"
+            onChange ={this.handleChange}
+          />Is isFriendly?
+          <br />
+          <label>
+            <input
+              type ="radio"
+              name = "gender"
+              value = "male"
+              checked = {this.state.gender === "male"}
+              onChange ={this.handleChange}
+             /> Male
+            
+          </label>
+          <br />
+          <label>
+          <input
+              type ="radio"
+              name = "gender"
+              value = "female"
+              checked = {this.state.gender === "female"}
+              onChange ={this.handleChange}
+             /> Female
+          </label>
+          <br />
+          <label>Favourite Color</label>
+          <select value={this.state.favColor} onChange ={this.handleChange}
+          name ="favColor">
+            <option value ="blue">Blue</option>
+            <option value ="green">Green</option>
+            <option value ="red">Red</option>
+          </select>
+          <h2> your fav color is {this.state.favColor}</h2>
         </form>
       </div>
     )
