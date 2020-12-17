@@ -23,6 +23,14 @@ import React from "react"
 //   );
 // }
 
+function clicked(){
+  console.log("I am clicked")
+}
+
+function mouseOver(){
+  console.log("hovering the mouse")
+}
+
 class App extends React.Component
 {
   constructor(){
@@ -35,7 +43,10 @@ class App extends React.Component
   {
     return (
       <div>
-        <h1>Implemented class based Component {this.state.answer}</h1>
+        <img src="https://www.fillmurray.com/200/100"/>
+        <br />
+        <br />
+        <button onClick={clicked} onMouseOver={mouseOver}> Click me</button>
       </div>
     )
   }
