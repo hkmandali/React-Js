@@ -38,9 +38,19 @@ class App extends React.Component
     this.state ={
       count : 0
     }
-    this.handleClick = this.handleClick.bind(this)
+    //this.handleClick = this.handleClick.bind(this)
   }
 
+  componentDidMount(){
+    fetch("https://swapi.co/api/people/1")
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        this.setState({
+          count : data
+        })
+      })
+  }
   handleClick()
   {
     //this.state.count++ // we cannot change the state directly , it gives an error
@@ -56,7 +66,7 @@ class App extends React.Component
     return (
       <div>
         <h1>{this.state.count}</h1>
-        <button onClick={this.handleClick}>CLick me to change the count</button>
+        <button >CLick me to change the count</button>
       </div>
     )
   }
