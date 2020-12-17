@@ -36,17 +36,27 @@ class App extends React.Component
   constructor(){
     super()
     this.state ={
-      answer : "done"
+      count : 0
     }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick()
+  {
+    //this.state.count++ // we cannot change the state directly , it gives an error
+    this.setState(prevState =>{ // here prevState is the previous state of the page
+      return{
+        count : prevState.count +1
+      }
+    }
+    )
   }
   render()
   {
     return (
       <div>
-        <img src="https://www.fillmurray.com/200/100"/>
-        <br />
-        <br />
-        <button onClick={clicked} onMouseOver={mouseOver}> Click me</button>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleClick}>CLick me to change the count</button>
       </div>
     )
   }
