@@ -39,22 +39,24 @@ class App extends React.Component
       firstName : "",
       lastName :"",
       isFriendly :false,
+      age :"",
       gender :"",
       favColor :""
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  componentDidMount(){
-    fetch("https://swapi.co/api/people/1")
-      .then(response => response.json())
-      .then(data => {
-        console.log(data)
-        this.setState({
-          count : data
-        })
-      })
-  }
+  // componentDidMount(){
+  //   fetch("https://swapi.co/api/people/1")
+  //     .then(response => response.json())
+  //     .then(data => {
+  //       console.log(data)
+  //       this.setState({
+  //         count : data
+  //       })
+  //     })
+  // }
   handleClick()
   {
     //this.state.count++ // we cannot change the state directly , it gives an error
@@ -81,13 +83,29 @@ class App extends React.Component
       [event.target.name]: event.target.value
     })
   }
+
+  handleSubmit(event)
+  {
+    event.preventDefault();
+    console.log("submitted the form")
+    var age = this.state.age
+    if(!Number(age))
+    {
+      alert("age must be a number")
+    }
+  }
+
+
+
   render(){
     return(
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input type="text" value = {this.state.firstName} name="firstName" placeholder="First Name" onChange={this.handleChange} />
           <br />
           <input type="text" value = {this.state.lastName} name="lastName" placeholder="Last Name" onChange={this.handleChange} />
+          <br />
+          <input type="text" value = {this.state.age} name="age" placeholder="Age" onChange={this.handleChange} />
           {/* <h1>{this.state.firstName} {this.state.lastName}</h1> */}
           <br />
           <textarea placeholder="some default text" />
@@ -126,7 +144,15 @@ class App extends React.Component
             <option value ="red">Red</option>
           </select>
           <h2> your fav color is {this.state.favColor}</h2>
+
+          <button>Submit</button>
         </form>
+        <hr />
+        <h3>Entered Information</h3>
+        <p>YOur name : {this.state.firstName} {this.state.lastName}</p>
+        <p> your gender : {this.state.gender}</p>
+        <p> your fav color : {this.state.favColor}</p>
+        
       </div>
     )
   }
